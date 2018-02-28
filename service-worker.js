@@ -46,7 +46,7 @@ self.addEventListener('install', function(e) {
       console.log('[ServiceWorker] PIPELINE SW: Criando Cache');
       return cache.addAll(filesToCache);
     }).catch(function(err) {
-      console.log('[ServiceWorker] PIPELINE SW: ERRO - ' + err);
+      console.log('[ServiceWorker] PIPELINE SW: Erro ao Criar Cache ( ' + err + ')');
     })
   );
 });
