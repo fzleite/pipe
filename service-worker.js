@@ -16,9 +16,27 @@ var dataCacheName = 'pipeline-v1';
 var cacheName = 'ArtITPipeline-v1';
 var filesToCache = [
   '/',
-  'index.html',
-  'js/common.js',
-  'images/ico/android-icon-192x192.png'
+  '/index.html',
+  '/js/common.js',
+  '/js/materialize.min.js',
+  '/js/materialize.js',
+  '/js/angular-1.0.1.min.js',
+  '/js/jquery-3.2.1.min.js',
+  '/css/materialize.css',
+  '/css/materialize.min.css',
+  '/images/cmenezes.jpg',
+  '/images/romulo.jpg',
+  '/images/fleite.png',
+  '/images/lardito.jpg',
+  '/images/mmelari.jpg',
+  '/images/artit_bkg.png',
+  '/images/clientes.jpg',
+  '/images/presales.jpg',
+  '/images/oportunidade.jpg',
+  '/images/reembolso.jpg',
+  '/images/relatorios.jpg',
+  '/images/rh.jpg',
+  '/images/ico/android-icon-192x192.png'
 ];
 
 self.addEventListener('install', function(e) {
