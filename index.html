@@ -1,126 +1,277 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
     <head>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+        <link rel="manifest" href="manifest.json">
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel="apple-touch-icon" sizes="57x57" href="/imagens/ico/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/imagens/ico/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/imagens/ico/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/imagens/ico/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/imagens/ico/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/imagens/ico/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/imagens/ico/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/imagens/ico/apple-icon-152x152.png">
         <link rel="apple-touch-icon" sizes="180x180" href="/imagens/ico/apple-icon-180x180.png">
         <link rel="icon" type="image/png" sizes="192x192"  href="/imagens/ico/android-icon-192x192.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/imagens/ico/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="/imagens/ico/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/imagens/ico/favicon-16x16.png">
-        <link rel="manifest" href="/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <title>PIPELINE</title>
-</head>
+
+        <meta name="theme-color" content="#7986cb">
+        <meta name="msapplication-TileColor" content="#7986cb">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+
+        <title>PIPELINE</title>
+
+    </head>
 
 <body>
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
 
-    <script type="text/javascript">
-
-    (function($){
-    $(function(){
-
-        $('.material-icons').sideNav();
-
-    }); // end of document ready
-    })(jQuery); // end of jQuery name space
-
-    </script>
-
-
+<div ng-controller="profileController">
+    <!-- *******************************************-->
+    <!--                    NAVBAR                  -->
+    <!-- *******************************************-->
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo left"><i  data-activates="slide-out" class="material-icons">menu</i>PIPELINE</a>
+                <a href="#!" class="brand-logo left"><i data-activates="slide-out" id="sideMenu" class="material-icons">menu</i>PIPELINE</a>
+                <ul id="nav-mobile" class="right">
+                    <li><a href="#" onclick="home();"><i data-activates="slide-out" class="material-icons">home</i></a></li>
+                    <li><a href="#modalUser" class="modal-trigger"><img class="circle btn-floating" src="{{ profileImage }}"></a></li>
+                </ul>
             </div>
         </nav>
     </div>
 
+
+    <!-- *******************************************-->
+    <!--                    SIDNAV                  -->
+    <!-- *******************************************-->
     <ul id="slide-out" class="side-nav">
         <li><div class="user-view">
             <div class="background"><img src="images/artit_bkg.png"></div>
-            <a href="#!user"><img class="circle" src="images/fleite.png"></a>
-            <a href="#!name"><span class="white-text name">Fernando Zimmermann Leite</span></a>
-            <a href="#!email"><span class="white-text email">fleite@artit.com.br</span></a>
+            <a href="#" onclick="openLink( linkPage.profile )"><img class="circle" src="{{ profileImage }}"></a>
+            <a href="#" onclick="openLink( linkPage.profile )"><span class="white-text name">{{ profileName }}</span></a>
+            <a href="#" onclick="openLink( linkPage.profile )"><span class="white-text email">{{ profileEmail }}</span></a>
         </div></li>
-        <li><a class="waves-effect" href="index.html"><i class="material-icons">home</i>Tela Inicial</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.home )"><i class="material-icons">home</i>Tela Inicial</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="pipe_add.html"><i class="material-icons">local_offer</i>Incluir Oportunidade</a></li>
-        <li><a class="waves-effect" href="pipe_cons.html"><i class="material-icons">search</i>Consultar Oportunidade</a></li>
-        <li><a class="waves-effect" href="pipe_cons_net.html"><i class="material-icons">search</i>Consultar NET</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.add_opportunity )"><i class="material-icons">local_offer</i>Incluir Oportunidade</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.cons_opportunity )"><i class="material-icons">search</i>Consultar Oportunidade</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.cons_net )"><i class="material-icons">search</i>Consultar NET</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="pipe_cli_add.html"><i class="material-icons">person_pin</i>Incluir Cliente</a></li>
-        <li><a class="waves-effect" href="pipe_cli_cons.html"><i class="material-icons">search</i>Consultar Cliente</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.add_customer )"><i class="material-icons">person_pin</i>Incluir Cliente</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.cons_customer )"><i class="material-icons">search</i>Consultar Cliente</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="waves-effect" href="pipe_rel.html"><i class="material-icons">data_usage</i>Relat&oacute;rios</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.reports )"><i class="material-icons">data_usage</i>Relat&oacute;rios</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.add_rh )"><i class="material-icons">person_add</i>Incluir Vagas</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.cons_rh )"><i class="material-icons">assignment</i>Consultar Vagas</a></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.feedback )"><i class="material-icons">autorenew</i>Feedbacks</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.refund )"><i class="material-icons">attach_money</i>Reembolsos</a></li>
     </ul>
+<!-- *******************************************-->
+</div>
 
+<script type="text/javascript">
 
-    <div class="row">
-        <div class="col l4 m6 s12">
-            <div class="card small">
-                <div class="card-image">
-                    <img src="images/oportunidade.jpg">
-                    <span class="card-title">Oportunidades</span>
-                </div>
-                <div class="card-content">
-                    <p>Gerir oportunidades de neg&oacute;cios em clientes de carteira</p>
-                </div>
-                <div class="card-action">
-                    <a href="pipe_add.html">Incluir</a>
-                    <a href="pipe_cons.html">Consultar</a>
-                    <a href="pipe_cons_net.html">Consultar NET</a>
-                </div>
+        
+</script>
+
+<!-- *******************************************-->
+<!--                     CARDS                  -->
+<!-- *******************************************-->
+<div id="cardsContainer" class="row">
+
+    <!-- *******************************************-->
+    <!--      CARD: OPORTUNIDADES                   -->
+    <div class="col l4 m6 s12">
+        <div class="card sticky-action small">
+            <div class="card-image">
+                <img class="activator" src="images/oportunidade.jpg">
             </div>
-        </div>
-        <div class="col l4 m6 s12">
-            <div class="card small">
-                <div class="card-image">
-                    <img src="images/clientes.jpg">
-                    <span class="card-title">Clientes</span>
-                </div>
-                <div class="card-content">
-                    <p>Gerir dados de clientes e informa&ccedil;&otilde;es de contato</p>
-                </div>
-                <div class="card-action">
-                    <a href="pipe_cli_add.html">Incluir</a>
-                    <a href="pipe_cli_cons.html">Consultar</a>
-                </div>
+            <div class="card-content">
+                <span class="card-title activator">Oportunidade<i class="material-icons right">more_vert</i></span>
             </div>
-        </div>
-        <div class="col l4 m6 s12">
-            <div class="card small">
-                <div class="card-image">
-                    <img src="images/relatorios.jpg">
-                    <span class="card-title">Relat&oacute;rios</span>
-                </div>
-                <div class="card-content">
-                    <p>Acessar dados de clientes e oportunidades</p>
-                </div>
-                <div class="card-action">
-                    <a href="pipe_rel.html">Relat&oacute;rios</a>
-                </div>
+            <div class="card-action">
+                <a class="grey-text" href="#" onclick="openLink( linkPage.add_opportunity )">Incluir</a>
+                <a class="grey-text" href="#" onclick="openLink( linkPage.cons_opportunity )">Consultar</a>
+                <a class="grey-text" href="#" onclick="openLink( linkPage.cons_net )">Consultar NET</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Oportunidades<i class="material-icons right">close</i></span>
+                <p>Gerir oportunidades de neg&oacute;cios abertas em algum momento e acompanhar seu ciclo de vida. Esta funcionalidade &ecirc; vital para o bom funcionamento da empresa.</p>
             </div>
         </div>
     </div>
+
+    <!-- *******************************************-->
+    <!--      CARD: CLIENTES                        -->
+    <div class="col l4 m6 s12">
+        <div class="card sticky-action small">
+            <div class="card-image">
+                <img class="activator" src="images/clientes.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Dados de Clientes<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-action">
+                <a class="grey-text" href="#" onclick="openLink( linkPage.add_customer )">Incluir</a>
+                <a class="grey-text" href="#" onclick="openLink( linkPage.cons_customer )">Consultar</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Dados de Clientes<i class="material-icons right">close</i></span>
+                <p>Gerir dados de clientes e informa&ccedil;&otilde;es de contato</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- *******************************************-->
+    <!--      CARD: RELATORIOS                      -->
+    <div class="col l4 m6 s12">
+        <div class="card sticky-action small">
+            <div class="card-image">
+                <img class="activator" src="images/relatorios.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Relat&oacute;rios<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-action">
+                <a class="grey-text" href="#" onclick="openLink( linkPage.reports )">Relat&oacute;rios</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Relat&oacute;rios<i class="material-icons right">close</i></span>
+                <p>Vizualize todas as informações de oportunidades em um unico local..</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- *******************************************-->
+    <!--      CARD: VAGAS                           -->
+    <div class="col l4 m6 s12">
+        <div class="card sticky-action small">
+            <div class="card-image">
+                <img class="activator" src="images/rh.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Gerenciar Vagas<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-action">
+                <a href="#" onclick="openLink( linkPage.add_rh )" class="grey-text">Incluir</a>
+                <a href="#" onclick="openLink( linkPage.cons_rh )" class="grey-text">Consultar</a>
+                <a href="#" onclick="openLink( linkPage.feedback )" class="grey-text">Feedbacks</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Gerenciar Vagas<i class="material-icons right">close</i></span>
+                <p>Gerencie as vagas abertas junto ao RH.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- *******************************************-->
+    <!--      CARD: REEMBOLSO                       -->
+    <div class="col l4 m6 s12">
+        <div class="card sticky-action small">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="images/reembolso.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Solicita&ccedil;&otilde;es de Reembolso<i class="material-icons right">more_vert</i></span>
+            </div>                      
+            <div class="card-action">
+                <a href="#" onclick="openLink( linkPage.refund )" class="grey-text">Solicitar Reembolso</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Solicita&ccedil;&otilde;es de Reembolso<i class="material-icons right">close</i></span>
+                <p>N&atilde;o se esque&ccedil;a de realizar suas solicita&ccedil;&itilde;es de reembolso com a data limite de no m&aacute;ximo o dia 10 de cada m&ecirc;s. Isto ajuda o departamento financeiro e garante o pagamento dos valores.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--               FIM DE CARDS                 -->
+<!-- *******************************************-->
+ 
+<!-- *******************************************-->
+<!-- IFRAME PARA EXIBIÇÃO DO CONTEUDO DO ROSIE  -->
+<!-- *******************************************-->
+<div id="frameContent" class="hide">
+    <iframe frameborder=2 id="frmContent" src="" borders=0 width="100%" height="550"></iframe>
+</div>
+<!-- *******************************************-->
+
+<!-- *******************************************-->
+<!--      MODAL PARA SELEÇÃO DE USUARIOS        -->
+<!-- *******************************************-->
+<div ng-controller="usersController">
+    <div id="modalUser" class="modal">
+        <div class="modal-content">
+            <h4>SELECIONE UM USU&Aacute;RIO</h4>
+            <p>
+                <div class="collection">
+                <a ng-repeat="item in itens" href="javascript:setUserCookie('{{ item.user }}')" class="collection-item modal-action modal-close"><img class="circle btn-floating" src="{{ item.profileImage }}">    {{ item.name }}</a>
+                </div>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        </div>
+    </div>
+</div>
+<!-- *******************************************-->
+
+<script>
+
+$('#frmContent').css('height', ($(window).height()-65)+'px');
+
+/** *************************** 
+ * Inicialização do SIDNAV 
+ **************************** */
+(function($){
+    $(function(){
+        $('#sideMenu').sideNav();
+    }); // end of document ready
+})(jQuery); // end of jQuery name space
+
+
+/** *************************** 
+ * Verifica se existe um cookie com o usuario selecionado,
+ * senão abre o modal com a seleção de usuario.
+ **************************** */
+ $(document).ready(function(){
+    $('.modal').modal();
+    if( document.cookie == '' ){
+        $('.modal').modal('open');
+    }
+});
+
+/**
+ * Inicializa objetos de seção dentro do conteudo
+ */
+var frameContent = $('#frameContent');
+var cardsContent = $('#cardsContainer');
+
+
+//hide displaying tab content
+//$(frameContent).removeClass('active');
+//$(frameContent).addClass('hide');
+//$(frameContent).removeClass('hide');
+//$(frameContent).addClass('hide');
+
+//setTimeout(function() {
+//    $(frameContent).removeClass('hide');
+//    $(cardsContent).addClass('hide');
+//}, 5000);
+
+</script>
 
 </body>
 </html>
