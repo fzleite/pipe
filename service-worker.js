@@ -13,9 +13,8 @@
 // limitations under the License.
 
 var dataCacheName = 'pipeline-v1';
-var cacheName = 'ArtITPipeline-v1';
+var cacheName = 'htmlComponents';
 var filesToCache = [
-  '/',
   '/index.html',
   '/js/common.js',
   '/js/materialize.min.js',
