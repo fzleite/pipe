@@ -54,7 +54,8 @@ var userList = [
          feedback           : 8,
          refund             : 9,
          cons_net           : 10,
-         profile            : 11
+         profile            : 11,
+         open_change        : 12
  } 
     
 /**
@@ -146,6 +147,8 @@ function openLink( id ){
             url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=2489&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3&responsavel=" + getUserData( getUserCookie() )[0].id_user;
         }else if( id == linkPage.profile ){ // Profile do Rosie
             url = "https://rosie.artit.com.br/user/perfil";
+        }else if( id == linkPage.open_change ){ // Abrir o Change
+            url = "https://change.artit.com.br/records/index.php";
         }
         showContent();
         $('#frmContent').attr('src', url);

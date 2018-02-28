@@ -10,12 +10,6 @@
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/imagens/ico/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="/imagens/ico/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/imagens/ico/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/imagens/ico/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/imagens/ico/favicon-16x16.png">
-
         <meta name="theme-color" content="#7986cb">
         <meta name="msapplication-TileColor" content="#7986cb">
         <meta name="mobile-web-app-capable" content="yes">
@@ -66,6 +60,8 @@
         <li><a class="waves-effect" href="#" onclick="openLink( linkPage.cons_opportunity )"><i class="material-icons">search</i>Consultar Oportunidade</a></li>
         <li><a class="waves-effect" href="#" onclick="openLink( linkPage.cons_net )"><i class="material-icons">search</i>Consultar NET</a></li>
         <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="#" onclick="openLink( linkPage.open_change )"><i class="material-icons">art_track</i>Abrir Change</a></li>
+        <li><div class="divider"></div></li>
         <li><a class="waves-effect" href="#" onclick="openLink( linkPage.add_customer )"><i class="material-icons">person_pin</i>Incluir Cliente</a></li>
         <li><a class="waves-effect" href="#" onclick="openLink( linkPage.cons_customer )"><i class="material-icons">search</i>Consultar Cliente</a></li>
         <li><div class="divider"></div></li>
@@ -79,11 +75,6 @@
     </ul>
 <!-- *******************************************-->
 </div>
-
-<script type="text/javascript">
-
-        
-</script>
 
 <!-- *******************************************-->
 <!--                     CARDS                  -->
@@ -108,6 +99,26 @@
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">Oportunidades<i class="material-icons right">close</i></span>
                 <p>Gerir oportunidades de neg&oacute;cios abertas em algum momento e acompanhar seu ciclo de vida. Esta funcionalidade &ecirc; vital para o bom funcionamento da empresa.</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- *******************************************-->
+    <!--      CARD: PRE-VENDAS                         -->
+    <div class="col l4 m6 s12">
+        <div class="card sticky-action small">
+            <div class="card-image">
+                <img class="activator" src="images/presales.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator">Pr&eacute;-Vendas<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-action">
+                <a class="grey-text" href="#" onclick="openLink( linkPage.open_change )">Change</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Pr&eacute;-Vendas<i class="material-icons right">close</i></span>
+                <p>Toda e qualquer iniciativa comercial que demande uma proposta, precisa ter um ticket no Change aberto.<br>Lembre-se de que as datas e expectativas de entregas de propostas devem ser negociadas tanto interna quanto externamente.</p>
             </div>
         </div>
     </div>
@@ -217,7 +228,7 @@
             <h4>SELECIONE UM USU&Aacute;RIO</h4>
             <p>
                 <div class="collection">
-                <a ng-repeat="item in itens" href="javascript:setUserCookie('{{ item.user }}')" class="collection-item modal-action modal-close"><img class="circle btn-floating" src="{{ item.profileImage }}">    {{ item.name }}</a>
+                <a ng-repeat="item in itens" href="#" onclick="setUserCookie('{{ item.user }}');" class="collection-item modal-action modal-close"><img class="circle btn-floating" src="{{ item.profileImage }}">    {{ item.name }}</a>
                 </div>
             </p>
         </div>
