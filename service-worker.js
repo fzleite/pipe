@@ -18,10 +18,6 @@ var filesToCache = [
   '/',
   'index.html',
   'js/common.js',
-  'js/materialize.min.js',
-  'js/materialize.js',
-  'js/angular-1.0.1.min.js',
-  'js/jquery-3.2.1.min.js',
   'css/materialize.css',
   'css/materialize.min.css',
   'images/cmenezes.jpg',
@@ -46,7 +42,7 @@ self.addEventListener('install', function(e) {
       console.log('[ServiceWorker] PIPELINE SW: Criando Cache');
       return cache.addAll(filesToCache);
     }).catch(function(err) {
-      console.log('[ServiceWorker] PIPELINE SW: Erro ao Criar Cache ( ' + err + ')');
+      console.log('[ServiceWorker] PIPELINE SW: Erro ao Criar Cache ( ' + err + ' )');
     })
   );
 });
