@@ -36,6 +36,7 @@
             <div class="nav-wrapper">
                 <a href="#!" class="brand-logo left"><i data-activates="slide-out" id="sideMenu" class="material-icons">menu</i>PIPELINE</a>
                 <ul id="nav-mobile" class="right">
+                    <li><a href="#" onclick="openLink( linkPage.rel_notificacoes );"><i data-activates="slide-out" class="material-icons">notifications_active</i></a></li>
                     <li><a href="#" onclick="home();"><i data-activates="slide-out" id="homeBtn" class="material-icons">home</i></a></li>
                     <li><a href="#modalUser" class="modal-trigger"><img class="circle btn-floating" src="{{ profileImage }}"></a></li>
                 </ul>
@@ -93,10 +94,10 @@
             <div class="card-action">
                 <a class="grey-text" href="#" onclick="openLink( linkPage.add_opportunity )">Incluir</a>
                 <a class="grey-text" href="#" onclick="openLink( linkPage.cons_opportunity )">Consultar</a>
+                <a class="grey-text" href="#" onclick="openLink( linkPage.reports )">Relat&oacute;rios</a>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">Oportunidades<i class="material-icons right">close</i></span>
-                <p>Gerir oportunidades de neg&oacute;cios abertas.</p>
                 <form action="#" id="frmFilter">
                 <input type="checkbox" class="filled-in" id="filterMine" checked="checked"/>
                 <label for="filterMine">Somente as minhas</label>
@@ -117,7 +118,33 @@
         </div>
     </div>
 
-        <!-- *******************************************-->
+    <!-- *******************************************-->
+    <!--      CARD: VAGAS                           -->
+    <div class="col l4 m6 s12">
+        <div class="card sticky-action small">
+            <div class="card-image">
+                <img class="activator" src="images/rh.jpg">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Gerenciar Vagas<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-action">
+                <a href="#" onclick="openLink( linkPage.add_rh )" class="grey-text">Incluir</a>
+                <a href="#" onclick="openLink( linkPage.cons_rh )" class="grey-text">Consultar</a>
+                <a href="#" onclick="openLink( linkPage.feedback )" class="grey-text">Feedbacks</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Gerenciar Vagas<i class="material-icons right">close</i></span>
+                <p><a href="#" onclick="openLink( linkPage.rel_calendario )" class="btn waves-effect waves-light">Calend&aacute;rio</a>
+                    <a href="#" onclick="openLink( linkPage.rel_reembolso )" class="btn waves-effect waves-light">Reemboso</a></p>
+                 <p><a href="#" onclick="openLink( linkPage.rel_horas_usuario )" class="btn waves-effect waves-light">Horas por Usu&aacute;rio</a></p>
+                <p><a href="#" onclick="openLink( linkPage.rel_horas_projeto )" class="btn waves-effect waves-light">Horas por Projeto</a></p>
+                <p><a href="#" onclick="openLink( linkPage.rel_horas_demanda )" class="btn waves-effect waves-light">Horas por Demanda</a></p>
+             </div>
+        </div>
+    </div>
+
+    <!-- *******************************************-->
     <!--      CARD: PRE-VENDAS                         -->
     <div class="col l4 m6 s12">
         <div class="card sticky-action small">
@@ -158,48 +185,6 @@
         </div>
     </div>
 
-
-    <!-- *******************************************-->
-    <!--      CARD: RELATORIOS                      -->
-    <div class="col l4 m6 s12">
-        <div class="card sticky-action small">
-            <div class="card-image">
-                <img class="activator" src="images/relatorios.jpg">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Relat&oacute;rios<i class="material-icons right">more_vert</i></span>
-            </div>
-            <div class="card-action">
-                <a class="grey-text" href="#" onclick="openLink( linkPage.reports )">Relat&oacute;rios</a>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Relat&oacute;rios<i class="material-icons right">close</i></span>
-                <p>Vizualize todas as informações de oportunidades em um unico local..</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- *******************************************-->
-    <!--      CARD: VAGAS                           -->
-    <div class="col l4 m6 s12">
-        <div class="card sticky-action small">
-            <div class="card-image">
-                <img class="activator" src="images/rh.jpg">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Gerenciar Vagas<i class="material-icons right">more_vert</i></span>
-            </div>
-            <div class="card-action">
-                <a href="#" onclick="openLink( linkPage.add_rh )" class="grey-text">Incluir</a>
-                <a href="#" onclick="openLink( linkPage.cons_rh )" class="grey-text">Consultar</a>
-                <a href="#" onclick="openLink( linkPage.feedback )" class="grey-text">Feedbacks</a>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Gerenciar Vagas<i class="material-icons right">close</i></span>
-                <p>Gerencie as vagas abertas junto ao RH.</p>
-            </div>
-        </div>
-    </div>
 
     <!-- *******************************************-->
     <!--      CARD: REEMBOLSO                       -->

@@ -55,6 +55,12 @@ var userList = [
          refund             : 9,
          profile            : 10,
          open_change        : 11,
+         rel_horas_demanda  : 12,
+         rel_horas_usuario  : 13,
+         rel_horas_projeto  : 14,
+         rel_calendario     : 15,
+         rel_reembolso      : 16,
+         rel_notificacoes   : 17,
 
          filter_claro       : 2489,
          filter_leroy       : 2183,
@@ -164,6 +170,19 @@ function openLink( id ){
             url = "https://rosie.artit.com.br/user/perfil";
         }else if( id == linkPage.open_change ){ // Abrir o Change
             url = "https://change.artit.com.br/records/index.php";
+
+        }else if( id == linkPage.rel_horas_demanda ){ // Relatorio de Horas por Demanda
+            url = "https://rosie.artit.com.br/relatorios/horas-por-demanda";
+        }else if( id == linkPage.rel_horas_usuario ){ // Relatorio de Horas por Usuario
+            url = "https://rosie.artit.com.br/relatorios/horas-por-usuario";
+        }else if( id == linkPage.rel_horas_projeto ){ // Relatorio de Horas por Projeto
+            url = "https://rosie.artit.com.br/relatorios/horas-por-projeto";
+        }else if( id == linkPage.rel_calendario ){ // Relatorio Calendario
+            url = "https://rosie.artit.com.br/relatorios/calendario";
+        }else if( id == linkPage.rel_reembolso ){ // Relatorio Reemboso
+            url = "https://rosie.artit.com.br/relatorios/reembolso";
+        }else if( id == linkPage.rel_notificacoes ){ // Relatorio de Notificações do Pipeline
+            url = "https://rosie.artit.com.br/pipeline";
 
         // Filtros de Empresas
         }else if( id > 1000 ){ // Filtrar Clientes ( ID = Codigo do Cliente )
