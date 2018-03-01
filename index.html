@@ -36,7 +36,7 @@
             <div class="nav-wrapper">
                 <a href="#!" class="brand-logo left"><i data-activates="slide-out" id="sideMenu" class="material-icons">menu</i>PIPELINE</a>
                 <ul id="nav-mobile" class="right">
-                    <li><a href="#" onclick="home();"><i data-activates="slide-out" class="material-icons">home</i></a></li>
+                    <li><a href="#" onclick="home();"><i data-activates="slide-out" id="homeBtn" class="material-icons">home</i></a></li>
                     <li><a href="#modalUser" class="modal-trigger"><img class="circle btn-floating" src="{{ profileImage }}"></a></li>
                 </ul>
             </div>
@@ -94,11 +94,19 @@
             <div class="card-action">
                 <a class="grey-text" href="#" onclick="openLink( linkPage.add_opportunity )">Incluir</a>
                 <a class="grey-text" href="#" onclick="openLink( linkPage.cons_opportunity )">Consultar</a>
-                <a class="grey-text" href="#" onclick="openLink( linkPage.cons_net )">Consultar NET</a>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">Oportunidades<i class="material-icons right">close</i></span>
-                <p>Gerir oportunidades de neg&oacute;cios abertas em algum momento e acompanhar seu ciclo de vida. Esta funcionalidade &ecirc; vital para o bom funcionamento da empresa.</p>
+                <p>Gerir oportunidades de neg&oacute;cios abertas.</p>
+                <form action="#" id="frmFilter">
+                <input type="checkbox" class="filled-in" id="filterMine" checked="checked"/>
+                <label for="filterMine">Somente as minhas</label>
+                </form>
+                <p><a href="#" onclick="openLink( linkPage.filter_claro )" class="btn waves-effect waves-light">Claro</a>
+                   <a href="#" onclick="openLink( linkPage.filter_cpqd )" class="btn waves-effect waves-light">CPqD</a>
+                   <a href="#" onclick="openLink( linkPage.filter_leroy )" class="btn waves-effect waves-light">Leroy</a></p>
+                <p><a href="#" onclick="openLink( linkPage.filter_unimed )" class="btn waves-effect waves-light">Unimed</a>
+                   <a href="#" onclick="openLink( linkPage.filter_qualicorp )" class="btn waves-effect waves-light">Qualicorp</a></p>
             </div>
         </div>
     </div>
@@ -239,6 +247,20 @@
 </div>
 <!-- *******************************************-->
 
+<div class="tap-target" data-activates="homeBtn">
+    <div class="tap-target-content white-text">
+        <h5>Home</h5>
+        <p>Clique aqui para acessar a pagina inicial e visualizar todas as opções disponíveis</p>
+    </div>
+</div>
+
+<div class="tap-target" data-activates="sideMenu">
+    <div class="tap-target-content white-text">
+        <h5>Menu Lateral</h5>
+        <p>Vizualize aqui em qualquer momento todas as opções disponíveis inclusive na Home</p>
+    </div>
+</div>
+    
 <script>
 
 $('#frmContent').css('height', ($(window).height()-65)+'px');

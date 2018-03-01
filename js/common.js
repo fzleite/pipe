@@ -55,7 +55,13 @@ var userList = [
          refund             : 9,
          cons_net           : 10,
          profile            : 11,
-         open_change        : 12
+         open_change        : 12,
+
+         filter_claro       : 13,
+         filter_leroy       : 14,
+         filter_cpqd        : 15,
+         filter_qualicorp   : 16,
+         filter_unimed      : 17
  } 
     
 /**
@@ -84,6 +90,7 @@ function profileController($scope) {
 
 function setUserCookie(user){
     document.cookie = "user=" + user;
+    //$('.tap-target').tapTarget('open');
     window.location.reload();
 }
 
@@ -121,6 +128,10 @@ function showContent(){
 
 function openLink( id ){
     var url;    
+    var filterMineOnly;
+
+    // filterMine = (document.frmFilter.filterMine.value ? true : false);
+    filterMineOnly = document.getElementById("filterMine").checked;
     
     if( id == linkPage.home ){ // HOME
         home();
@@ -149,7 +160,21 @@ function openLink( id ){
             url = "https://rosie.artit.com.br/user/perfil";
         }else if( id == linkPage.open_change ){ // Abrir o Change
             url = "https://change.artit.com.br/records/index.php";
+
+        // Filtros de Empresas
+        }else if( id == linkPage.filter_claro ){ // Filtrar Claro
+            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=2489&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
+        }else if( id == linkPage.filter_leroy ){ // Filtrar Leroy
+            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=2183&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
+        }else if( id == linkPage.filter_cpqd ){ // Filtrar CPqD
+            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=1073&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
+        }else if( id == linkPage.filter_qualicorp ){ // Filtrar Qualicorp
+            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=3750&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
+        }else if( id == linkPage.filter_unimed ){ // Filtrar Unimed
+            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=3445&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
+
         }
+
         showContent();
         $('#frmContent').attr('src', url);
     } 
