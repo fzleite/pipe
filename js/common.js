@@ -57,12 +57,19 @@ var userList = [
          profile            : 11,
          open_change        : 12,
 
-         filter_claro       : 13,
-         filter_leroy       : 14,
-         filter_cpqd        : 15,
-         filter_qualicorp   : 16,
-         filter_unimed      : 17
- } 
+         filter_claro       : 2489,
+         filter_leroy       : 2183,
+         filter_cpqd        : 1073,
+         filter_qualicorp   : 3750,
+         filter_unimed      : 3445,
+         filter_hc          : 3878,
+         filter_matera      : 4273,
+         filter_movile      : 4000,
+         filter_multiplay   : 3701,
+         filter_promon      : 3720,
+         filter_teleideia   : 4114,
+         filter_caixa       : 4151
+} 
     
 /**
  * Controles do Angular
@@ -162,16 +169,8 @@ function openLink( id ){
             url = "https://change.artit.com.br/records/index.php";
 
         // Filtros de Empresas
-        }else if( id == linkPage.filter_claro ){ // Filtrar Claro
-            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=2489&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
-        }else if( id == linkPage.filter_leroy ){ // Filtrar Leroy
-            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=2183&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
-        }else if( id == linkPage.filter_cpqd ){ // Filtrar CPqD
-            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=1073&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
-        }else if( id == linkPage.filter_qualicorp ){ // Filtrar Qualicorp
-            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=3750&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
-        }else if( id == linkPage.filter_unimed ){ // Filtrar Unimed
-            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=3445&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
+        }else if( id > 1000 ){ // Filtrar Clientes ( ID = Codigo do Cliente )
+            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=" + id + "&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3" + ( filterMineOnly ? "&responsavel=0" + getUserData( getUserCookie() )[0].id_user : "" );
 
         }
 
