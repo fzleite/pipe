@@ -53,9 +53,8 @@ var userList = [
          cons_rh            : 7,
          feedback           : 8,
          refund             : 9,
-         cons_net           : 10,
-         profile            : 11,
-         open_change        : 12,
+         profile            : 10,
+         open_change        : 11,
 
          filter_claro       : 2489,
          filter_leroy       : 2183,
@@ -161,8 +160,6 @@ function openLink( id ){
             url = "https://rosie.artit.com.br/rh/feedback";
         }else if( id == linkPage.refund ){ // Reembolso
             url = "https://rosie.artit.com.br/user/perfil?panel=reembolso";
-        }else if( id == linkPage.cons_net ){ // Consultar Oportunidades da NET
-            url = "https://rosie.artit.com.br/pipeline/pipeline/consultar?cliente=2489&projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3&responsavel=" + getUserData( getUserCookie() )[0].id_user;
         }else if( id == linkPage.profile ){ // Profile do Rosie
             url = "https://rosie.artit.com.br/user/perfil";
         }else if( id == linkPage.open_change ){ // Abrir o Change
