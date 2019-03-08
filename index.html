@@ -316,8 +316,8 @@ function setIframeHeight(id) {
 
 var lastHeight = 0;
 function setFrameSize(){
-    console.log("Ultima altura" + lastHeight);
     if( lastHeight != getDocHeight() ){
+        console.log("Detectada alteração de tela. Atualizando tamanho do iframe: " + lastHeight + "px");
         setIframeHeight('frmContent');
         lastHeight = getDocHeight();
     }
