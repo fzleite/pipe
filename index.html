@@ -309,16 +309,16 @@ function setIframeHeight(id) {
     ifrm.style.visibility = 'hidden';
     ifrm.style.height = "10px"; 
 
-    ifrm.style.height = (getDocHeight() - 60) + "px";
+    ifrm.style.height = (getDocHeight()) + "px";
 
     ifrm.style.visibility = 'visible';
 }
 
 var lastHeight = 0;
 function setFrameSize(){
-    lastHeight = getDocHeight();
     if( lastHeight != getDocHeight() ){
         setIframeHeight('frmContent');
+        lastHeight = getDocHeight();
     }
     setTimeout(setFrameSize, 1000);
 }
