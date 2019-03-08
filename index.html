@@ -262,7 +262,7 @@
     
 <script>
 
-$('#frmContent').css('height', ($(window).height()-65)+'px');
+// $('#frmContent').css('height', ($(window).height()-65)+'px');
 
 /** *************************** 
  * Inicialização do SIDNAV 
@@ -292,29 +292,31 @@ var frameContent = $('#frameContent');
 var cardsContent = $('#cardsContainer');
 
 
-function getDocHeight(doc) {
-    doc = doc || document;
+function getDocHeight() {
     // stackoverflow.com/questions/1145850/
-    var body = doc.body, html = doc.documentElement;
+    var body = document.body; 
+    var html = document.documentElement;
+
     var height = Math.max( body.scrollHeight, body.offsetHeight, 
         html.clientHeight, html.scrollHeight, html.offsetHeight );
-    return height;
+
+        return height;
 }
 
 function setIframeHeight(id) {
     var ifrm = document.getElementById(id);
 
     ifrm.style.visibility = 'hidden';
-    ifrm.style.height = "10px"; // reset to minimal height ...
-    // IE opt. for bing/msn needs a bit added or scrollbar appears
-    ifrm.style.height = (getDocHeight( document.body ) - 100) + "px";
-    alert((getDocHeight( document.body )-100));
+    ifrm.style.height = "10px"; 
+
+    ifrm.style.height = (getDocHeight() - 100) + "px";
+
     ifrm.style.visibility = 'visible';
 }
 
 function setFrameSize(){
     setIframeHeight('frmContent');
-    setTimeout(setFrameSize, 2000);
+    setTimeout(setFrameSize, 1000);
 }
 
 setFrameSize()
