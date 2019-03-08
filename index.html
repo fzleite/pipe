@@ -35,19 +35,31 @@
     <!--                    NAVBAR                  -->
     <!-- *******************************************-->
     <div class="navbar-fixed">
+        <!-- <a href="#!" class="brand-logo center"><i data-activates="slide-out" id="sideMenu" class="material-icons hide-on-large-only">menu</i>PIPELINE</a> -->
         <nav>
             <div class="nav-wrapper">
-                <!-- <a href="#!" class="brand-logo left"><i data-activates="slide-out" id="sideMenu" class="material-icons">menu</i>PIPELINE</a> -->
-                <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i>PIPELINE</a>
-                <ul id="nav-mobile" class="right">
-                    <li><a href="#" onclick="openLink( linkPage.rel_notificacoes );"><i data-activates="slide-out" class="material-icons">notifications_active</i></a></li>
+                 <a href="#" data-activates="slide-out" class="brand-logo center"><i class="material-icons hide-on-large-only" id="sideMenu" >menu</i>PIPELINE</a> 
+                <ul id="nav-mobile" class="right hide-on-large-only">
+                    <li><a href="#" class="show-on-large" onclick="openLink( linkPage.rel_notificacoes );"><i data-activates="slide-out" class="material-icons">notifications_active</i></a></li>
                     <li><a href="#" onclick="home();"><i data-activates="slide-out" id="homeBtn" class="material-icons">home</i></a></li>
                     <li><a href="#modalUser" class="modal-trigger"><img class="circle btn-floating" src="{{ profileImage }}"></a></li>
                 </ul>
             </div>
         </nav>
     </div>
-
+    
+    <!-- *******************************************-->
+    <!--              MENU FLUTUANTE                -->
+    <!-- *******************************************-->
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+          <i class="large material-icons">dashboard</i>
+        </a>
+        <ul>
+          <li><a href="#modalUser" class="btn-floating red modal-trigger"><i class="material-icons">assignment_ind</i></a></li>
+          <li><a class="btn-floating yellow darken-1" onclick="openLink( linkPage.home )"><i class="material-icons">home</i></a></li>
+        </ul>
+      </div>
 
     <!-- *******************************************-->
     <!--                    SIDNAV                  -->
@@ -292,6 +304,10 @@ var frameContent = $('#frameContent');
 var cardsContent = $('#cardsContainer');
 
 
+/**
+ *  Monitora alterações no tamanho da tela para ajusta o iFrame
+ */
+
 function getDocHeight() {
     // stackoverflow.com/questions/1145850/
     var body = document.body; 
@@ -325,6 +341,17 @@ function setFrameSize(){
 }
 
 setFrameSize()
+
+
+/**
+ * Inicializa o floating button com suas ações
+ */
+
+ document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, options);
+  });
+
 
 </script>
 
