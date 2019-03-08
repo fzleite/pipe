@@ -42,7 +42,7 @@ var userList = [
     name: "Rogerio Caporali",
     id_user: 73,
     email: "rcaporali@artit.com.br",
-    profileImage: "images/mmelari.jpg"
+    profileImage: "images/rcaporali.jpg"
   }
 ];
 
