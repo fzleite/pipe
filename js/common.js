@@ -283,13 +283,6 @@ function registerSW() {
   }
 }
 
-/**
- * Executa ações quando a tela estiver carregada
- */
-
-var frameContent = $("#frameContent");
-var cardsContent = $("#cardsContainer");
-
 $(document).ready(function() {
   // Inicializa o floating button com suas ações
   //$('.fixed-action-btn').floatingActionButton();
