@@ -19,13 +19,14 @@
 
         <title>PIPELINE</title>
 
+        <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+
     </head>
 
 <body>
-<script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
 
 <div id="container">
 
@@ -34,10 +35,9 @@
     <!--                    NAVBAR                  -->
     <!-- *******************************************-->
     <div class="navbar-fixed">
-        <!-- <a href="#!" class="brand-logo center"><i data-activates="slide-out" id="sideMenu" class="material-icons hide-on-large-only">menu</i>PIPELINE</a> -->
         <nav>
             <div class="nav-wrapper">
-                 <a href="#" data-activates="slide-out" class="brand-logo left"><i class="material-icons hide-on-large-only" id="sideMenu" >menu</i>PIPELINE</a> 
+                <a href="#!" class="brand-logo left"><i data-activates="slide-out" id="sideMenu" class="material-icons hide-on-large-only">menu</i>PIPELINE</a>
                 <ul id="nav-mobile" class="right hide-on-large-only">
                     <li><a href="#" class="show-on-large" onclick="openLink( linkPage.rel_notificacoes );"><i data-activates="slide-out" class="material-icons">notifications_active</i></a></li>
                     <li><a href="#" onclick="home();"><i data-activates="slide-out" id="homeBtn" class="material-icons">home</i></a></li>
@@ -278,33 +278,6 @@
 </div> 
 
 <script>
-
-/**
- * Executa ações quando a tela estiver carregada
- */
- $(document).ready(function() {
-  // Inicializa o floating button com suas ações
-  //$('.fixed-action-btn').floatingActionButton();
-
-  // Verifica se existe um cookie com o usuario selecionado,
-  // senão abre o modal com a seleção de usuario.
-  $(".modal").modal();
-  if (document.cookie == "") {
-    $(".modal").modal("open");
-  }
-
-  // Inicializa o SidNav
-  $("#sideMenu").sideNav();
-
-  // Invoca metodo que irá monitar o tamanho da tela
-  setFrameSize();
-
-  // Invoca metodo que irá registrar o Service Worker
-  registerSW();
-});
-
-var frameContent = $("#frameContent");
-var cardsContent = $("#cardsContainer");
 
 
 </script>
