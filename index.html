@@ -17,16 +17,15 @@
         <meta name="apple-mobile-web-app-capable" content="yes" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/common.js"></script>
-
         <title>PIPELINE</title>
 
     </head>
 
 <body>
+<script type="text/javascript" src="js/angular-1.0.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 
 <div id="container">
 
@@ -38,7 +37,7 @@
         <!-- <a href="#!" class="brand-logo center"><i data-activates="slide-out" id="sideMenu" class="material-icons hide-on-large-only">menu</i>PIPELINE</a> -->
         <nav>
             <div class="nav-wrapper">
-                 <a href="#" data-activates="slide-out" class="brand-logo center"><i class="material-icons hide-on-large-only" id="sideMenu" >menu</i>PIPELINE</a> 
+                 <a href="#" data-activates="slide-out" class="brand-logo left"><i class="material-icons hide-on-large-only" id="sideMenu" >menu</i>PIPELINE</a> 
                 <ul id="nav-mobile" class="right hide-on-large-only">
                     <li><a href="#" class="show-on-large" onclick="openLink( linkPage.rel_notificacoes );"><i data-activates="slide-out" class="material-icons">notifications_active</i></a></li>
                     <li><a href="#" onclick="home();"><i data-activates="slide-out" id="homeBtn" class="material-icons">home</i></a></li>
@@ -272,94 +271,30 @@
     </div>
 </div>
     
-<script>
-
-// $('#frmContent').css('height', ($(window).height()-65)+'px');
-
-/** *************************** 
- * Inicialização do SIDNAV 
- **************************** */
-(function($){
-    $(function(){
-        $('#sideMenu').sideNav();
-    }); // end of document ready
-})(jQuery); // end of jQuery name space
-
-
-/** *************************** 
- * Verifica se existe um cookie com o usuario selecionado,
- * senão abre o modal com a seleção de usuario.
- **************************** */
- $(document).ready(function(){
-    $('.modal').modal();
-    if( document.cookie == '' ){
-        $('.modal').modal('open');
-    }
-});
-
-/**
- * Inicializa objetos de seção dentro do conteudo
- */
-var frameContent = $('#frameContent');
-var cardsContent = $('#cardsContainer');
-
-
-/**
- *  Monitora alterações no tamanho da tela para ajusta o iFrame
- */
-
-function getDocHeight() {
-    // stackoverflow.com/questions/1145850/
-    var body = document.body; 
-    var html = document.documentElement;
-
-    var height = Math.max( body.scrollHeight, body.offsetHeight, 
-        html.clientHeight, html.scrollHeight, html.offsetHeight );
-
-        return height;
-}
-
-function setIframeHeight(id) {
-    var ifrm = document.getElementById(id);
-
-    ifrm.style.visibility = 'hidden';
-    ifrm.style.height = "10px"; 
-
-    ifrm.style.height = (getDocHeight() - 75) + "px";
-
-    ifrm.style.visibility = 'visible';
-}
-
-var lastHeight = 0;
-function setFrameSize(){
-    if( lastHeight != getDocHeight() ){
-        console.log("Detectada alteração de tela. Atualizando tamanho do iframe: " + lastHeight + "px");
-        setIframeHeight('frmContent');
-        lastHeight = getDocHeight();
-    }
-    setTimeout(setFrameSize, 1000);
-}
-
-setFrameSize()
-
-
-/**
- * Inicializa o floating button com suas ações
- */
-
- document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, options);
-  });
-
-
-</script>
-
 <!-- Finalização do DIV CONTENT -->
 </div> 
 
 <!-- Finalização do DIV CONTAINER -->
 </div> 
+
+<script>
+
+/** *************************** 
+ * Inicialização do SIDNAV 
+ **************************** */
+// (function($){
+//     $(function(){
+//         $('#sideMenu').sideNav();
+//     }); // end of document ready
+// })(jQuery); // end of jQuery name space
+
+
+/**
+ * Inicializa objetos de seção dentro do conteudo
+ */
+
+
+</script>
 
 </body>
 </html>
