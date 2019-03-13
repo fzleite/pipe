@@ -1,6 +1,6 @@
-var dataCacheName = "pipeline-v1";
-
-var cacheName = "htmlComponents-v1";
+var version = "-v1.1";
+var dataCacheName = "pipeline" + version;
+var cacheName = "htmlComponents" + version;
 
 var filesToCache = [
   "/index.html",
