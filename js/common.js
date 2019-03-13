@@ -229,10 +229,84 @@ function openLink(id) {
 }
 
 /**
+ *  Monitora alterações no tamanho da tela para ajusta o iFrame
+ */
+function getDocHeight() {
+  // stackoverflow.com/questions/1145850/
+  var body = document.body;
+  var html = document.documentElement;
+
+  var height = Math.max(
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
+  );
+
+  return height;
+}
+
+function setIframeHeight(id) {
+  var ifrm = document.getElementById(id);
+
+  ifrm.style.visibility = "hidden";
+  ifrm.style.height = "10px";
+
+  ifrm.style.height = getDocHeight() - 75 + "px";
+
+  ifrm.style.visibility = "visible";
+}
+
+var lastHeight = 0;
+function setFrameSize() {
+  if (lastHeight != getDocHeight()) {
+    console.log(
+      "Detectada alteração de tela. Atualizando tamanho do iframe: " +
+        lastHeight +
+        "px"
+    );
+    setIframeHeight("frmContent");
+    lastHeight = getDocHeight();
+  }
+  setTimeout(setFrameSize, 1000);
+}
+
+/**
  * Registro do Service Worer
  */
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./service-worker.js").then(function() {
-    console.log("Service Worker Registered");
-  });
+function registerSW() {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js").then(function() {
+      console.log("[ServiceWorker] Service Worker Registered");
+    });
+  }
 }
+
+/**
+ * Executa ações quando a tela estiver carregada
+ */
+
+var frameContent = $("#frameContent");
+var cardsContent = $("#cardsContainer");
+
+$(document).ready(function() {
+  // Inicializa o floating button com suas ações
+  //$('.fixed-action-btn').floatingActionButton();
+
+  // Verifica se existe um cookie com o usuario selecionado,
+  // senão abre o modal com a seleção de usuario.
+  $(".modal").modal();
+  if (document.cookie == "") {
+    $(".modal").modal("open");
+  }
+
+  // Inicializa o SidNav
+  $("#sideMenu").sideNav();
+
+  // Invoca metodo que irá monitar o tamanho da tela
+  setFrameSize();
+
+  // Invoca metodo que irá registrar o Service Worker
+  registerSW();
+});
