@@ -38,8 +38,6 @@ self.addEventListener("install", function(event) {
     caches
       .open(cacheName)
       .then(function(cache) {
-        console.log(cache);
-        console.log(filesToCache);
         console.log(
           "[ServiceWorker] PIPELINE SW: Criando Cache (" + cacheName + ")"
         );
