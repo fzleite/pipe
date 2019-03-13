@@ -282,24 +282,3 @@ function registerSW() {
     });
   }
 }
-
-$(document).ready(function() {
-  // Inicializa o floating button com suas ações
-  //$('.fixed-action-btn').floatingActionButton();
-
-  // Verifica se existe um cookie com o usuario selecionado,
-  // senão abre o modal com a seleção de usuario.
-  $(".modal").modal();
-  if (document.cookie == "") {
-    $(".modal").modal("open");
-  }
-
-  // Inicializa o SidNav
-  $("#sideMenu").sideNav();
-
-  // Invoca metodo que irá monitar o tamanho da tela
-  setFrameSize();
-
-  // Invoca metodo que irá registrar o Service Worker
-  registerSW();
-});
