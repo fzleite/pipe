@@ -1,4 +1,4 @@
-var version = "-v1.2";
+var version = "-v1.3";
 var dataCacheName = "pipeline" + version;
 var cacheName = "htmlComponents" + version;
 
