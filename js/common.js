@@ -157,6 +157,7 @@ function showContent(frame) {
   }
 }
 
+var lastLink = "";
 function openLink(id) {
   var url;
   var filterMineOnly;
@@ -241,7 +242,10 @@ function openLink(id) {
 
     showContent(source);
     if (source == Frame.ROSIE) {
-      $("#frmContent").attr("src", url);
+      if (lastLink != url) {
+        lastLink = url;
+        $("#frmContent").attr("src", url);
+      }
     } else {
       $("#frmContentChange").attr("src", url);
     }
