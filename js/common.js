@@ -84,6 +84,14 @@ var linkPage = {
 };
 
 /**
+ * Enum do frame de conteudoio
+ */
+var Frame = {
+  CHANGE: 1,
+  ROSIE: 2
+};
+
+/**
  * Controles do Angular
  */
 function usersController($scope) {
@@ -137,14 +145,22 @@ function home() {
   $(cardsContent).removeClass("hide");
 }
 
-function showContent() {
-  $(frameContent).removeClass("hide");
-  $(cardsContent).addClass("hide");
+function showContent(frame) {
+  if (frame == Frame.ROSIE) {
+    $(frameContent).removeClass("hide");
+    $(frameContentChange).addClass("hide");
+    $(cardsContent).addClass("hide");
+  } else {
+    $(frameContent).addClass("hide");
+    $(frameContentChange).removeClass("hide");
+    $(cardsContent).addClass("hide");
+  }
 }
 
 function openLink(id) {
   var url;
   var filterMineOnly;
+  source = Frame.ROSIE;
 
   // filterMine = (document.frmFilter.filterMine.value ? true : false);
   filterMineOnly = document.getElementById("filterMine").checked;
@@ -191,6 +207,7 @@ function openLink(id) {
     } else if (id == linkPage.open_change) {
       // Abrir o Change
       url = "https://change.artit.com.br/records/index.php";
+      source = Frame.CHANGE;
     } else if (id == linkPage.rel_horas_demanda) {
       // Relatorio de Horas por Demanda
       url = "https://rosie.artit.com.br/relatorios/horas-por-demanda";
@@ -222,8 +239,12 @@ function openLink(id) {
           : "");
     }
 
-    showContent();
-    $("#frmContent").attr("src", url);
+    showContent(source);
+    if (source == Frame.ROSIE) {
+      $("#frmContent").attr("src", url);
+    } else {
+      $("#frmContentChange").attr("src", url);
+    }
   }
   $("#sideMenu").sideNav("hide");
 }
