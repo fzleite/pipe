@@ -306,6 +306,3 @@ $(document).ready(function() {
   // Invoca metodo que irá registrar o Service Worker
   registerSW();
 });
-
-var frameContent = $("#frameContent");
-var cardsContent = $("#cardsContainer");
