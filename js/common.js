@@ -61,6 +61,7 @@ var linkPage = {
   feedback: 8,
   refund: 9,
   profile: 10,
+  intranet: 18,
   open_change: 11,
   rel_horas_demanda: 12,
   rel_horas_usuario: 13,
@@ -274,6 +275,10 @@ function openLink(id) {
     } else if (id == linkPage.rel_notificacoes) {
       // Relatorio de Notificações do Pipeline
       url = "https://rosie.artit.com.br/pipeline";
+      rosieOpened = true;
+    } else if (id == linkPage.intranet) {
+      // Relatorio de Notificações do Pipeline
+      url = "https://rosie.artit.com.br/user/perfil#panel_contributors";
       rosieOpened = true;
 
       // Filtros de Empresas
