@@ -265,7 +265,6 @@ function openLink(id) {
         if (currentFrame == Frame.CHANGE) {
           currentChangeID = prompt(
             "Informe o numero do ticket do Change",
-            "Navegar no Change",
             currentChangeID
           );
           if (currentChangeID == null || currentChangeID == "")
