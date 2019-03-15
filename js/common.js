@@ -88,7 +88,8 @@ var linkPage = {
  */
 var Frame = {
   CHANGE: 1,
-  ROSIE: 2
+  ROSIE: 2,
+  HOME: 3
 };
 
 /**
@@ -142,18 +143,47 @@ function getUserData(username) {
  */
 function home() {
   $(frameContent).addClass("hide");
+  $(frameContentChange).addClass("hide");
   $(cardsContent).removeClass("hide");
 }
 
+/**
+ * Alterna as telas de acordo coma  tela ativa
+ */
+var rosieOpened = false;
+var changeOpened = false;
+var currentFrame = Frame.HOME;
+function switchFrame() {
+  if (rosieOpened || changeOpened) {
+    if (currentFrame == Frame.HOME) {
+      currentFrame = rosieOpened
+        ? Frame.ROSIE
+        : changeOpened
+        ? Frame.CHANGE
+        : Frame.HOME;
+    } else if (currentFrame == Frame.ROSIE) {
+      currentFrame = changeOpened ? Frame.CHANGE : Frame.HOME;
+    } else if (currentFrame == Frame.CHANGE) {
+      currentFrame = rosieOpened ? Frame.ROSIE : Frame.HOME;
+    }
+    showContent(currentFrame);
+  }
+}
+
+/**
+ * Apresenta o conteudo do Rosie ou do Change
+ * */
 function showContent(frame) {
   if (frame == Frame.ROSIE) {
     $(frameContent).removeClass("hide");
     $(frameContentChange).addClass("hide");
     $(cardsContent).addClass("hide");
-  } else {
+  } else if (frame == Frame.CHANGE) {
     $(frameContent).addClass("hide");
     $(frameContentChange).removeClass("hide");
     $(cardsContent).addClass("hide");
+  } else if (frame == Frame.HOME) {
+    home();
   }
 }
 
@@ -161,72 +191,90 @@ var lastLink = "";
 function openLink(id) {
   var url;
   var filterMineOnly;
-  source = Frame.ROSIE;
+  currentFrame = Frame.ROSIE;
 
   // filterMine = (document.frmFilter.filterMine.value ? true : false);
   filterMineOnly = document.getElementById("filterMine").checked;
 
   if (id == linkPage.home) {
     // HOME
+    currentFrame = Frame.HOME;
     home();
   } else {
     if (id == linkPage.add_opportunity) {
       // Aduciobar Oportunidade
       url = "https://rosie.artit.com.br/pipeline/pipeline/incluir";
+      rosieOpened = true;
     } else if (id == linkPage.cons_opportunity) {
       // Consultar Oportunidade
       url =
         "https://rosie.artit.com.br/pipeline/pipeline/consultar?projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3&responsavel=" +
         getUserData(getUserCookie())[0].id_user;
+      rosieOpened = true;
     } else if (id == linkPage.add_customer) {
       // Incluir Cliente
       url = "https://rosie.artit.com.br/pipeline/cliente/incluir";
+      rosieOpened = true;
     } else if (id == linkPage.cons_customer) {
       // Consultar Cliente
       url = " ";
+      rosieOpened = true;
     } else if (id == linkPage.reports) {
       // Relatorios
       url =
         "https://rosie.artit.com.br/pipeline/relatorio?&responsavel=" +
         getUserData(getUserCookie())[0].id_user +
         "&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3#RelDashboardAnalitico";
+      rosieOpened = true;
     } else if (id == linkPage.add_rh) {
       // Adicionar Vagas
       url = "https://rosie.artit.com.br/rh/recrutamento/vagas/nova";
+      rosieOpened = true;
     } else if (id == linkPage.cons_rh) {
       // Consultar Vagas
       url = "https://rosie.artit.com.br/rh/recrutamento/vagas";
+      rosieOpened = true;
     } else if (id == linkPage.feedback) {
       // Feedbacks
       url = "https://rosie.artit.com.br/rh/feedback";
+      rosieOpened = true;
     } else if (id == linkPage.refund) {
       // Reembolso
       url = "https://rosie.artit.com.br/user/perfil?panel=reembolso";
+      rosieOpened = true;
     } else if (id == linkPage.profile) {
       // Profile do Rosie
       url = "https://rosie.artit.com.br/user/perfil";
+      rosieOpened = true;
     } else if (id == linkPage.open_change) {
       // Abrir o Change
       url = "https://change.artit.com.br/records/index.php";
-      source = Frame.CHANGE;
+      currentFrame = Frame.CHANGE;
+      changeOpened = true;
     } else if (id == linkPage.rel_horas_demanda) {
       // Relatorio de Horas por Demanda
       url = "https://rosie.artit.com.br/relatorios/horas-por-demanda";
+      rosieOpened = true;
     } else if (id == linkPage.rel_horas_usuario) {
       // Relatorio de Horas por Usuario
       url = "https://rosie.artit.com.br/relatorios/horas-por-usuario";
+      rosieOpened = true;
     } else if (id == linkPage.rel_horas_projeto) {
       // Relatorio de Horas por Projeto
       url = "https://rosie.artit.com.br/relatorios/horas-por-projeto";
+      rosieOpened = true;
     } else if (id == linkPage.rel_calendario) {
       // Relatorio Calendario
       url = "https://rosie.artit.com.br/relatorios/calendario";
+      rosieOpened = true;
     } else if (id == linkPage.rel_reembolso) {
       // Relatorio Reemboso
       url = "https://rosie.artit.com.br/relatorios/reembolso";
+      rosieOpened = true;
     } else if (id == linkPage.rel_notificacoes) {
       // Relatorio de Notificações do Pipeline
       url = "https://rosie.artit.com.br/pipeline";
+      rosieOpened = true;
 
       // Filtros de Empresas
     } else if (id > 1000) {
@@ -238,15 +286,16 @@ function openLink(id) {
         (filterMineOnly
           ? "&responsavel=0" + getUserData(getUserCookie())[0].id_user
           : "");
+      rosieOpened = true;
     }
 
-    showContent(source);
-    if (source == Frame.ROSIE) {
+    showContent(currentFrame);
+    if (currentFrame == Frame.ROSIE) {
       if (lastLink != url) {
         lastLink = url;
         $("#frmContent").attr("src", url);
       }
-    } else {
+    } else if (currentFrame == Frame.CHANGE) {
       $("#frmContentChange").attr("src", url);
     }
   }
@@ -292,6 +341,7 @@ function setFrameSize() {
         "px"
     );
     setIframeHeight("frmContent");
+    setIframeHeight("frmContentChange");
     lastHeight = getDocHeight();
   }
   setTimeout(setFrameSize, 1000);
