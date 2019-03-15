@@ -192,7 +192,6 @@ var lastLink = "";
 function openLink(id) {
   var url;
   var filterMineOnly;
-  currentFrame = Frame.ROSIE;
 
   // filterMine = (document.frmFilter.filterMine.value ? true : false);
   filterMineOnly = document.getElementById("filterMine").checked;
@@ -205,20 +204,24 @@ function openLink(id) {
     if (id == linkPage.add_opportunity) {
       // Aduciobar Oportunidade
       url = "https://rosie.artit.com.br/pipeline/pipeline/incluir";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.cons_opportunity) {
       // Consultar Oportunidade
       url =
         "https://rosie.artit.com.br/pipeline/pipeline/consultar?projeto=0&date_start=&date_end=&probabilidade=0&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3&responsavel=" +
         getUserData(getUserCookie())[0].id_user;
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.add_customer) {
       // Incluir Cliente
       url = "https://rosie.artit.com.br/pipeline/cliente/incluir";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.cons_customer) {
       // Consultar Cliente
       url = " ";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.reports) {
       // Relatorios
@@ -226,26 +229,32 @@ function openLink(id) {
         "https://rosie.artit.com.br/pipeline/relatorio?&responsavel=" +
         getUserData(getUserCookie())[0].id_user +
         "&fase%5B%5D=1&fase%5B%5D=2&fase%5B%5D=3#RelDashboardAnalitico";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.add_rh) {
       // Adicionar Vagas
       url = "https://rosie.artit.com.br/rh/recrutamento/vagas/nova";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.cons_rh) {
       // Consultar Vagas
       url = "https://rosie.artit.com.br/rh/recrutamento/vagas";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.feedback) {
       // Feedbacks
       url = "https://rosie.artit.com.br/rh/feedback";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.refund) {
       // Reembolso
       url = "https://rosie.artit.com.br/user/perfil?panel=reembolso";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.profile) {
       // Profile do Rosie
       url = "https://rosie.artit.com.br/user/perfil";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.open_change) {
       // Abrir o Change
@@ -269,30 +278,37 @@ function openLink(id) {
     } else if (id == linkPage.rel_horas_demanda) {
       // Relatorio de Horas por Demanda
       url = "https://rosie.artit.com.br/relatorios/horas-por-demanda";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.rel_horas_usuario) {
       // Relatorio de Horas por Usuario
       url = "https://rosie.artit.com.br/relatorios/horas-por-usuario";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.rel_horas_projeto) {
       // Relatorio de Horas por Projeto
       url = "https://rosie.artit.com.br/relatorios/horas-por-projeto";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.rel_calendario) {
       // Relatorio Calendario
       url = "https://rosie.artit.com.br/relatorios/calendario";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.rel_reembolso) {
       // Relatorio Reemboso
       url = "https://rosie.artit.com.br/relatorios/reembolso";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.rel_notificacoes) {
       // Relatorio de Notificações do Pipeline
       url = "https://rosie.artit.com.br/pipeline";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     } else if (id == linkPage.intranet) {
       // Relatorio de Notificações do Pipeline
       url = "https://rosie.artit.com.br/user/perfil#panel_contributors";
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
 
       // Filtros de Empresas
@@ -305,6 +321,7 @@ function openLink(id) {
         (filterMineOnly
           ? "&responsavel=0" + getUserData(getUserCookie())[0].id_user
           : "");
+      currentFrame = Frame.ROSIE;
       rosieOpened = true;
     }
 
