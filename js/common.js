@@ -249,7 +249,17 @@ function openLink(id) {
       rosieOpened = true;
     } else if (id == linkPage.open_change) {
       // Abrir o Change
-      url = "https://change.artit.com.br/records/index.php";
+      if (currentFrame == Frame.CHANGE) {
+        var id = prompt(
+          "Informe o numero do ticket do Change",
+          "Navegar no Change"
+        );
+        if (id == null || id == "")
+          url = "https://change.artit.com.br/records/index.php";
+        else url = "https://change.artit.com.br/records/view.php?id=" + id;
+      } else {
+        url = "https://change.artit.com.br/records/index.php";
+      }
       currentFrame = Frame.CHANGE;
       changeOpened = true;
     } else if (id == linkPage.rel_horas_demanda) {
