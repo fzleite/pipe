@@ -174,6 +174,7 @@ function switchFrame() {
 /**
  * Apresenta o conteudo do Rosie ou do Change
  * */
+var currentChangeID = "";
 function showContent(frame) {
   if (frame == Frame.ROSIE) {
     $(frameContent).removeClass("hide");
@@ -262,13 +263,20 @@ function openLink(id) {
         url = "https://change.artit.com.br/logon/index.php";
       } else {
         if (currentFrame == Frame.CHANGE) {
-          var id = prompt(
+          currentChangeID = prompt(
             "Informe o numero do ticket do Change",
-            "Navegar no Change"
+            "Navegar no Change",
+            currentChangeID
           );
-          if (id == null || id == "")
+          if (currentChangeID == null || currentChangeID == "")
             url = "https://change.artit.com.br/records/index.php";
-          else url = "https://change.artit.com.br/records/view.php?id=" + id;
+            currentChangeID = "";
+          else {
+            currentChangeID = currentChangeID.indexOf("-") != -1 ? currentChangeID.split("-")[1] : currentChangeID;
+            url =
+              "https://change.artit.com.br/records/view.php?id=" +
+              currentChangeID;
+          }
         } else {
           url = "https://change.artit.com.br/records/index.php";
         }
