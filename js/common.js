@@ -267,11 +267,14 @@ function openLink(id) {
             "Informe o numero do ticket do Change",
             currentChangeID
           );
-          if (currentChangeID == null || currentChangeID == "")
+          if (currentChangeID == null || currentChangeID == "") {
             url = "https://change.artit.com.br/records/index.php";
             currentChangeID = "";
-          else {
-            currentChangeID = currentChangeID.indexOf("-") != -1 ? currentChangeID.split("-")[1] : currentChangeID;
+          } else {
+            currentChangeID =
+              currentChangeID.indexOf("-") != -1
+                ? currentChangeID.split("-")[1]
+                : currentChangeID;
             url =
               "https://change.artit.com.br/records/view.php?id=" +
               currentChangeID;
