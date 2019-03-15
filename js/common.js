@@ -337,10 +337,10 @@ function openLink(id) {
 
     showContent(currentFrame);
     if (currentFrame == Frame.ROSIE) {
-      if (lastLink != url) {
-        lastLink = url;
-        $("#frmContent").attr("src", url);
-      }
+      // if (lastLink != url) {
+      lastLink = url;
+      $("#frmContent").attr("src", url);
+      // }
     } else if (currentFrame == Frame.CHANGE) {
       $("#frmContentChange").attr("src", url);
     }
