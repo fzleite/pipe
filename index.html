@@ -51,8 +51,8 @@
     <!--              MENU FLUTUANTE                -->
     <!-- *******************************************-->
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red">
-          <i class="large material-icons">dashboard</i>
+        <a class="btn-floating btn-large red" onclick="switchFrame();">
+          <i class="large material-icons">autorenew</i>
         </a>
         <ul>
           <li><a href="#modalUser" class="btn-floating red modal-trigger"><i class="material-icons">assignment_ind</i></a></li>
@@ -66,7 +66,7 @@
     <ul id="slide-out" class="side-nav fixed">
         <li><div class="user-view">
             <div class="background"><img src="images/artit_bkg.png"></div>
-            <a href="#" onclick="openLink( linkPage.profile )"><img class="circle" src="{{ profileImage }}"></a>
+            <a href="#modalUser" class="modal-trigger"><img class="circle" src="{{ profileImage }}"></a>
             <a href="#" onclick="openLink( linkPage.profile )"><span class="white-text name">{{ profileName }}</span></a>
             <a href="#" onclick="openLink( linkPage.profile )"><span class="white-text email">{{ profileEmail }}</span></a>
         </div></li>
